@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import type { CSSProperties } from 'react';
-import clsx from 'clsx';
 
 import { Article } from '../article/Article';
 import { ArticleParamsForm } from '../article-params-form/ArticleParamsForm';
@@ -12,7 +11,7 @@ import {
 import styles from './app.module.scss';
 
 export const App = () => {
-		const [settings, setSettings] =
+	const [settings, setSettings] =
 		useState<ArticleStateType>(defaultArticleState);
 	const handleApplySettings = (newSettings: ArticleStateType) => {
 		setSettings(newSettings);

@@ -11,25 +11,22 @@ import {
 import styles from './app.module.scss';
 
 export const App = () => {
-	const [settings, setSettings] =
+	const [articleState, setArticleState] =
 		useState<ArticleStateType>(defaultArticleState);
-	const handleApplySettings = (newSettings: ArticleStateType) => {
-		setSettings(newSettings);
-	};
 
 	return (
 		<main
 			className={styles.main}
 			style={
 				{
-					'--font-family': settings.fontFamilyOption.value,
-					'--font-size': settings.fontSizeOption.value,
-					'--font-color': settings.fontColor.value,
-					'--container-width': settings.contentWidth.value,
-					'--bg-color': settings.backgroundColor.value,
+					'--font-family': articleState.fontFamilyOption.value,
+					'--font-size': articleState.fontSizeOption.value,
+					'--font-color': articleState.fontColor.value,
+					'--container-width': articleState.contentWidth.value,
+					'--bg-color': articleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm applySettings={handleApplySettings} />
+			<ArticleParamsForm applySettings={setArticleState} />
 			<Article />
 		</main>
 	);

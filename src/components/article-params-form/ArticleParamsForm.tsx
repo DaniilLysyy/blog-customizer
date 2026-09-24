@@ -1,8 +1,12 @@
+import React, { useRef, useState } from 'react';
+import clsx from 'clsx';
+
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Select } from 'src/ui/select';
 import { Text } from 'src/ui/text';
+import { Separator } from 'src/ui/separator';
 
 import {
 	ArticleStateType,
@@ -16,9 +20,6 @@ import {
 } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
-import React, { useRef, useState } from 'react';
-import clsx from 'clsx';
-import { Separator } from 'src/ui/separator';
 import { useCloseForm } from '../useCloseForm';
 
 type ArticleParamsFormProps = {
@@ -51,22 +52,18 @@ export const ArticleParamsForm = ({
 
 	const handleFontChange = (newValue: OptionType) =>
 		updateFormSettings({ fontFamilyOption: newValue });
+
 	const handleFontSizeChange = (newValue: OptionType) =>
 		updateFormSettings({ fontSizeOption: newValue });
+
 	const handleFontColorChange = (newValue: OptionType) =>
 		updateFormSettings({ fontColor: newValue });
+
 	const handleBGColorChange = (newValue: OptionType) =>
 		updateFormSettings({ backgroundColor: newValue });
+
 	const handleContentWidthChange = (newValue: OptionType) =>
 		updateFormSettings({ contentWidth: newValue });
-
-	const defaultFontFamilyPlaceholder =
-		fontFamilyOption?.title || fontFamilyOptions[0]?.title;
-	const defaultFontColorPlaceholder = fontColor?.title || fontColors[0]?.title;
-	const defaultBGColorPlaceholder =
-		backgroundColor?.title || backgroundColors[0]?.title;
-	const defaultContentWidthPlaceholder =
-		contentWidth?.title || contentWidthArr[0]?.title;
 
 	const resetFormSettings = () => {
 		setFormSettings(defaultArticleState);
@@ -103,12 +100,11 @@ export const ArticleParamsForm = ({
 						title='шрифт'
 						selected={fontFamilyOption}
 						options={fontFamilyOptions}
-						placeholder={defaultFontFamilyPlaceholder}
 						onChange={handleFontChange}
 					/>
 
 					<RadioGroup
-						name={'radioGroupName'}
+						name='radioGroupName'
 						options={fontSizeOptions}
 						selected={fontSizeOption}
 						onChange={handleFontSizeChange}
@@ -118,7 +114,6 @@ export const ArticleParamsForm = ({
 					<Select
 						title='цвет шрифта'
 						onChange={handleFontColorChange}
-						placeholder={defaultFontColorPlaceholder}
 						selected={fontColor}
 						options={fontColors}
 					/>
@@ -128,7 +123,6 @@ export const ArticleParamsForm = ({
 					<Select
 						title='цвет фона'
 						onChange={handleBGColorChange}
-						placeholder={defaultBGColorPlaceholder}
 						selected={backgroundColor}
 						options={backgroundColors}
 					/>
@@ -136,7 +130,6 @@ export const ArticleParamsForm = ({
 					<Select
 						title='ширина контента'
 						onChange={handleContentWidthChange}
-						placeholder={defaultContentWidthPlaceholder}
 						selected={contentWidth}
 						options={contentWidthArr}
 					/>
